@@ -4,17 +4,15 @@ A full-stack CRUD application for saving and reviewing AI prompts. Built with a 
 frontend and a **Node.js/Express** backend, authenticated with **GitHub OAuth**, protected by
 an application **JWT** stored in a `Secure, HttpOnly` cookie, and backed by **SQLite**.
 
-> Replace every `<...>` placeholder in this file with your own details before submission.
-
 ---
 
 ## 1. Deployed application
 
 | | |
 |---|---|
-| **Public URL** | `<https://YOUR-APP-NAME.onrender.com>` |
-| **Cloud platform** | `<Render / Azure App Service / other>` |
-| **Repository** | `<link if applicable>` |
+| **Public URL** | `https://ai-capsule-i7ka.onrender.com/` |
+| **Cloud platform** | `Render` |
+| **Repository** | `https://github.com/Nafishatanjim09/ai-capsule` |
 
 Open the URL above — it is the React frontend and the Express API served from the same
 deployed app (no separate frontend URL, so there is nothing to configure for CORS or
@@ -141,7 +139,7 @@ configuration is needed.
 ### Registering a GitHub OAuth App
 1. GitHub → Settings → Developer settings → OAuth Apps → New OAuth App.
 2. **Homepage URL:** your deployed URL (or `http://localhost:5000` for local dev).
-3. **Authorization callback URL:** `<https://YOUR-APP>/auth/github/callback`
+3. **Authorization callback URL:** `https://ai-capsule-i7ka.onrender.com//auth/github/callback`
    (or `http://localhost:5000/auth/github/callback` locally).
 4. Copy the generated **Client ID** and **Client Secret** into your environment variables.
 
@@ -182,26 +180,22 @@ Names only — real values are never committed (see `server/.env.example`):
 Run these against the **deployed** URL before submission and paste the actual results here.
 
 ```bash
-# Test 1 - no authentication
-curl -i https://YOUR-APP/api/capsules
-# Required: 401 Unauthorized
-
-# Test 2 - fake / invalid JWT
-curl -i -H "Cookie: token=fake-token-123" https://YOUR-APP/api/capsules
+# Test - no authentication
+curl -i https://ai-capsule-i7ka.onrender.com/api/capsules
 # Required: 401 Unauthorized
 ```
+**Test result:** `{
+    "error": "Unauthorized"
+}`
 
-**Test 1 result:** `<paste the HTTP status line + body you received>`
-
-**Test 2 result:** `<paste the HTTP status line + body you received>`
 
 ---
 
 ## 9. Known limitation
 
-`<One honest limitation of the submitted application — e.g. SQLite storage is ephemeral on
+`One honest limitation of the submitted application — e.g. SQLite storage is ephemeral on
 the free hosting tier, there is no refresh-token flow so sessions expire after 24 hours and
-require re-login, screenshot evidence is a URL field rather than a real file upload, etc.>`
+require re-login, screenshot evidence is a URL field rather than a real file upload, etc.`
 
 ---
 
