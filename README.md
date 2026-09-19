@@ -180,22 +180,28 @@ Names only — real values are never committed (see `server/.env.example`):
 Run these against the **deployed** URL before submission and paste the actual results here.
 
 ```bash
-# Test - no authentication
+# Test 1 - no authentication
 curl -i https://ai-capsule-i7ka.onrender.com/api/capsules
 # Required: 401 Unauthorized
+
+# Test 2 - fake / invalid JWT
+curl -i -H "Cookie: token=fake-token-123" https://ai-capsule-i7ka.onrender.com
+# Required: 401 Unauthorized
 ```
-**Test result:** `{
+
+**Test 1 result:** `{
     "error": "Unauthorized"
 }`
 
+**Test 2 result:** `{ 401 Unauthorized }`
 
 ---
 
 ## 9. Known limitation
 
-`One honest limitation of the submitted application — e.g. SQLite storage is ephemeral on
+`<One honest limitation of the submitted application — e.g. SQLite storage is ephemeral on
 the free hosting tier, there is no refresh-token flow so sessions expire after 24 hours and
-require re-login, screenshot evidence is a URL field rather than a real file upload, etc.`
+require re-login, screenshot evidence is a URL field rather than a real file upload, etc.>`
 
 ---
 
