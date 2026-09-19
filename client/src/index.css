@@ -1,0 +1,556 @@
+/* ==========================================================================
+   AI Capsule — design tokens
+   Concept: a personal card-catalog / ledger for prompts. Warm paper surface,
+   serif headings for the "catalog" voice, sans body for legibility, colored
+   index tabs on each record instead of generic rounded shadow-cards.
+   ========================================================================== */
+
+:root {
+  --ink: #211e1b;
+  --ink-soft: #55503f;
+  --paper: #eae6da;
+  --surface: #f6f4ec;
+  --rule: #c9c2ab;
+  --rule-soft: #ddd7c4;
+
+  --teal: #1f6f5c;
+  --teal-dark: #175545;
+  --amber: #b9822f;
+  --brick: #a84b32;
+  --brick-dark: #8c3c27;
+
+  --tab-coding: #1f6f5c;
+  --tab-writing: #b9822f;
+  --tab-research: #4c5d8a;
+  --tab-other: #746a58;
+
+  --font-display: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --radius: 4px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  margin: 0 0 0.4em;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--teal-dark);
+}
+
+:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.page {
+  min-height: 100vh;
+  padding: 48px 24px 80px;
+}
+
+.landing {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 12vh;
+}
+
+.dashboard {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.loading {
+  text-align: center;
+  color: var(--ink-soft);
+  margin-top: 20vh;
+}
+
+/* ==========================================================================
+   Landing page — "catalog ticket"
+   ========================================================================== */
+
+.ticket {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  max-width: 460px;
+  width: 100%;
+  padding: 40px 36px;
+  box-shadow: 4px 4px 0 var(--rule-soft);
+}
+
+.ticket-label {
+  margin: 0 0 12px;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+
+.ticket h1 {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+}
+
+.ticket-lede {
+  color: var(--ink-soft);
+  max-width: 34ch;
+  margin: 0 0 24px;
+}
+
+.ticket-rule {
+  border-top: 1px dashed var(--rule);
+  margin: 20px 0;
+}
+
+.ticket-facts {
+  margin: 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ticket-facts dt {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.ticket-facts dd {
+  margin: 2px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  max-width: 38ch;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.btn-primary {
+  background: var(--teal);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--teal-dark);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--rule);
+  color: var(--ink);
+}
+
+.btn-ghost:hover {
+  border-color: var(--ink-soft);
+}
+
+.btn-danger {
+  background: transparent;
+  border-color: var(--brick);
+  color: var(--brick-dark);
+}
+
+.btn-danger:hover {
+  background: var(--brick);
+  color: #fff;
+}
+
+.btn-small {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Dashboard header
+   ========================================================================== */
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 16px;
+}
+
+.dashboard-eyebrow {
+  margin: 0 0 4px;
+  color: var(--teal-dark);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 1.9rem;
+}
+
+.user-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-name {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.error-banner {
+  background: #f6e4dd;
+  border: 1px solid var(--brick);
+  color: var(--brick-dark);
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Capsule form
+   ========================================================================== */
+
+.capsule-form {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--teal);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-heading h2 {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.editing-tag {
+  font-size: 0.8rem;
+  color: var(--amber);
+  font-weight: 600;
+}
+
+.capsule-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.capsule-form input,
+.capsule-form select,
+.capsule-form textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 9px 12px;
+  resize: vertical;
+}
+
+.capsule-form input:focus,
+.capsule-form select:focus,
+.capsule-form textarea:focus {
+  border-color: var(--teal);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-row-thirds {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox input {
+  width: 16px;
+  height: 16px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   Section divider + capsule list
+   ========================================================================== */
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.section-divider h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.count-badge {
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 999px;
+}
+
+.empty-state {
+  border: 1px dashed var(--rule);
+  border-radius: var(--radius);
+  padding: 32px;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.empty-hint {
+  font-size: 0.88rem;
+  margin-top: 6px;
+}
+
+.capsule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.capsule-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--tab-other);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+
+.capsule-card.tab-coding {
+  border-left-color: var(--tab-coding);
+}
+.capsule-card.tab-writing {
+  border-left-color: var(--tab-writing);
+}
+.capsule-card.tab-research {
+  border-left-color: var(--tab-research);
+}
+.capsule-card.tab-other {
+  border-left-color: var(--tab-other);
+}
+
+.capsule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.capsule-header h3 {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.version-badge {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 1px 10px;
+  white-space: nowrap;
+}
+
+.capsule-meta {
+  margin: 4px 0 10px;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.capsule-text {
+  margin: 0 0 8px;
+  white-space: pre-wrap;
+}
+
+.capsule-summary {
+  margin: 0 0 10px;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+.capsule-summary-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--teal-dark);
+  margin-bottom: 2px;
+}
+
+.capsule-flags {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.flag {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+
+.flag-on {
+  color: var(--teal-dark);
+  border-color: var(--teal);
+  background: rgba(31, 111, 92, 0.08);
+}
+
+.capsule-notes {
+  margin: 0 0 10px;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.capsule-link {
+  display: inline-block;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.capsule-actions {
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid var(--rule-soft);
+  padding-top: 12px;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  .page {
+    padding: 28px 16px 60px;
+  }
+
+  .ticket {
+    padding: 28px 22px;
+  }
+
+  .form-row,
+  .form-row-thirds {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+/* ==========================================================================
+   Dark mode (respects viewer preference)
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #ece7db;
+    --ink-soft: #b6ae98;
+    --paper: #1c1b17;
+    --surface: #242119;
+    --rule: #423c30;
+    --rule-soft: #322d24;
+  }
+
+  .btn-ghost {
+    color: var(--ink);
+  }
+
+  .capsule-form input,
+  .capsule-form select,
+  .capsule-form textarea {
+    background: #171512;
+    color: var(--ink);
+    border-color: var(--rule);
+  }
+
+  .error-banner {
+    background: rgba(168, 75, 50, 0.15);
+  }
+}
